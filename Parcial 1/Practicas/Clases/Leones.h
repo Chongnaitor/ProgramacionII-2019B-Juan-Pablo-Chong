@@ -1,21 +1,20 @@
 #pragma once
 #include "Mamiferos.h"//Importamos librerias
-#include <string>
-#include <iostream>
 class Leones :
 	public Mamiferos //Creamos una clase leones que herede de mamiferos
 {
 public:
 	Leones() {};//Constructor default
 	~Leones() {};//Destructor
-	std::string Nombre;//Miembros de la clase
+				 //Miembros de la clase
+	
 	bool Macho;
 	int Patas;
 	int Hijos;
 	int LeonesMuertos;
 	int Alimentar;
-	Leones(int Patas_c, int Hijos_m, int LeonesMuertos_m, bool Macho_m, int Alimentar_m)//Constructor mas especifico
-		:Patas(Patas_c),Hijos(Hijos_m),LeonesMuertos(LeonesMuertos_m),Macho(Macho_m),Alimentar(Alimentar_m){}
+	Leones(int Patas_c, int Hijos_m, int LeonesMuertos_m, bool Macho_m, int Alimentar_m, std::string Animal_m)//Constructor mas especifico
+		:Patas(Patas_c), Hijos(Hijos_m), LeonesMuertos(LeonesMuertos_m), Macho(Macho_m), Alimentar(Alimentar_m) {Nombre = Animal_m;}
 	void TenerHijos(Leones&Leon, Leones&Leona)
 	{
 		if (Leona.Macho != true)
@@ -36,4 +35,3 @@ public:
 	}
 
 };
-

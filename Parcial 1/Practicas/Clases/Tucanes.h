@@ -1,6 +1,5 @@
 //Los comentarios de todas las clases son lo mismo, ver ejemplo en Leones.h
 #pragma once
-#include <iostream>
 #include "Viviparos.h"
 class Tucanes :
 	public Viviparos
@@ -12,8 +11,8 @@ public:
 	int Comida;
 	bool Volador;
 	bool Macho;
-	Tucanes(int Alas_c,int Comida_c,bool Volador_c,bool Macho_c)
-	 :Alas(Alas_c),Comida(Comida_c),Volador(Volador_c),Macho(Macho_c){}
+	Tucanes(std::string Nombre_c, int Alas_c,int Comida_c,bool Volador_c,bool Macho_c)
+		:Alas(Alas_c), Comida(Comida_c), Volador(Volador_c), Macho(Macho_c) {Nombre = Nombre_c;}
 	void EscaparVolando(Tucanes&Tucan)
 	{
 		std::cout << " Tu Tucan se escapo volando..." << std::endl;
