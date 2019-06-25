@@ -23,5 +23,17 @@ public:
 		}
 		std::cout << "Nodo ingresado\n";
 	}
+	void ImprimirPila()
+	{
+		if (Primero != nullptr)
+		{
+			Primero->Print();
+		}
+	}
+
+	void Destruir()
+	{
+		delete Primero;
+	}
 };
 

@@ -5,11 +5,9 @@ class Nodo
 {
 public:
 	Nodo() {};
-	~Nodo() {};
 	int Edad;
 	std::string Nombre;
 	Nodo*SiguienteNodo;
-
 	void LlenarNodo(Nodo*&Info)
 	{
 		if (SiguienteNodo == nullptr)
@@ -23,20 +21,23 @@ public:
 	}
 	void Print()
 	{
-
-
+		std::cout << Nombre << " ";
+		std::cout << Edad << std::endl;
+		if(SiguienteNodo!=nullptr)
+		{
+			SiguienteNodo->Print();
+		}
+	}
+	~Nodo()
+	{
 		if (SiguienteNodo != nullptr)
 		{
-			std::cout << "Ya no hay nada" << std::endl;
+			delete SiguienteNodo;
 		}
-		std::cout << SiguienteNodo->Edad << std::endl;
-		std::cout << SiguienteNodo->Nombre << std::endl;
-
 	}
-
 	Nodo(int Edad_m, std::string Nombre_m)
 	{
 		Edad = Edad_m;  Nombre = Nombre_m;
+		SiguienteNodo = nullptr;
 	}
-
 };
