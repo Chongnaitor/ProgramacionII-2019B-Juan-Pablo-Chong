@@ -47,30 +47,32 @@ void BinaryTree::destruir_tree(Nodo*rama) {
 void BinaryTree::insert(int Dato, string Nombre, string Apellido, Nodo*rama)
 {
 
-
-	if (rama->izquierda != nullptr) {
-		insert(Dato, Nombre, Apellido, rama->izquierda);
+	if (Dato < rama->Dato) {
+		if (rama->izquierda != nullptr) {
+			insert(Dato, Nombre, Apellido, rama->izquierda);
+		}
+		else {
+			rama->izquierda = new Nodo;
+			rama->izquierda->Dato = Dato;
+			rama->izquierda->Nombre = Nombre;
+			rama->izquierda->Apellido = Apellido;
+			rama->izquierda->izquierda = nullptr;
+			rama->izquierda->derecha = nullptr;
+		}
 	}
-	else {
-		rama->izquierda = new Nodo;
-		rama->izquierda->Dato = Dato;
-		rama->izquierda->Nombre = Nombre;
-		rama->izquierda->Apellido = Apellido;
-		rama->izquierda->izquierda = nullptr;
-		rama->izquierda->derecha = nullptr;
-	}
-
-
-	if (rama->derecha != nullptr) {
-		insert(Dato, Nombre, Apellido, rama->derecha);
-	}
-	else {
-		rama->derecha = new Nodo;
-		rama->derecha->Dato = Dato;
-		rama->derecha->Nombre = Nombre;
-		rama->derecha->Apellido = Apellido;
-		rama->derecha->derecha = nullptr;
-		rama->derecha->izquierda = nullptr;
+	else if (Dato >= rama->Dato)
+	{
+		if (rama->derecha != nullptr) {
+			insert(Dato, Nombre, Apellido, rama->derecha);
+		}
+		else {
+			rama->derecha = new Nodo;
+			rama->derecha->Dato = Dato;
+			rama->derecha->Nombre = Nombre;
+			rama->derecha->Apellido = Apellido;
+			rama->derecha->derecha = nullptr;
+			rama->derecha->izquierda = nullptr;
+		}
 	}
 
 }
