@@ -16,13 +16,13 @@ public:
 	~BinaryTree();
 	void postordenado_print(Nodo *rama);
 	void preordenado_print(Nodo *rama);
-	void insert(int Dato, string Nombre, string Apellido);
+	void insert(int Dato,string Nombre,string Apellido);
 	void destruir_tree();
 	void enorden_print();
 	void postordenado_print();
 	void preordenado_print();
 	void destruir_tree(Nodo *rama);
-	void insert(int Dato, string Nombre, string Apellido, Nodo *rama);
+	void insert(int Dato,string Nombre,string Apellido, Nodo *rama);
 	void enorden_print(Nodo *rama);
 
 	Nodo *raiz;
@@ -44,7 +44,7 @@ void BinaryTree::destruir_tree(Nodo*rama) {
 	}
 }
 
-void BinaryTree::insert(int Dato, string Nombre, string Apellido, Nodo*rama)
+void BinaryTree::insert(int Dato,string Nombre,string Apellido, Nodo*rama) 
 {
 
 	if (Dato < rama->Dato) {
@@ -79,7 +79,7 @@ void BinaryTree::insert(int Dato, string Nombre, string Apellido, Nodo*rama)
 
 void BinaryTree::insert(int Dato, string Nombre, string Apellido) {
 	if (raiz != nullptr) {
-		insert(Dato, Nombre, Apellido, raiz);
+		insert(Dato,Nombre,Apellido, raiz);
 	}
 	else {
 		raiz = new Nodo;
@@ -117,7 +117,7 @@ void BinaryTree::postordenado_print(Nodo*rama) {
 	if (rama != nullptr) {
 		enorden_print(rama->izquierda);
 		enorden_print(rama->derecha);
-		cout << rama->Dato << "," << rama->Nombre << "," << rama->Apellido << ",";
+		cout << rama->Dato<< "," <<rama->Nombre<< "," <<rama->Apellido << ",";
 	}
 }
 
@@ -133,6 +133,49 @@ void BinaryTree::preordenado_print(Nodo*rama) {
 		enorden_print(rama->derecha);
 	}
 }
+
+int tamaño(Nodo* node);
+
+
+bool Balance(Nodo *raiz)
+{
+	int lh; 
+	int rh;
+	
+	if (raiz == nullptr)
+	{
+		return true;
+	}
+		
+
+	lh = tamaño(raiz->izquierda);
+	rh = tamaño(raiz->derecha);
+
+	if (abs(lh - rh) <= 1 && Balance(raiz->izquierda) && Balance(raiz->derecha))
+	{
+		return true;
+	}
+		
+	return false;
+}
+
+
+int max(int a, int b)
+{
+	return (a >= b) ? a : b;
+}
+
+
+int tamaño(Nodo* node)
+{
+	if (node == nullptr)
+		return 0;
+
+
+	return 1 + max(tamaño(node->izquierda),
+		tamaño(node->derecha));
+}
+
 
 int main() {
 
@@ -160,6 +203,15 @@ int main() {
 	tree->preordenado_print();
 	tree->enorden_print();
 	tree->postordenado_print();
+	if (Balance(tree->raiz))
+	{
+		cout << "Esta balanceado";
+	}
+	else
+	{
+		cout << "No esta balanceado";
+	}
+
 	cin.ignore();
 	cin.get();
 	delete tree;
